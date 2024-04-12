@@ -1,7 +1,7 @@
 // SBusTracker.h
 #include <Arduino.h>
 
-#define HISTORY_SIZE 12
+#define HISTORY_SIZE 9
 
 class SBusTracker {
     private:

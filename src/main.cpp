@@ -9,7 +9,7 @@
 
 #define ACTIVE_SIGNAL 1792
 #define REALESED_SIGNAL 192
-#define MAJORITY_THREASH 1100
+#define MAJORITY_THREASH ( (HISTORY_SIZE / 2 + 1) * ACTIVE_SIGNAL) / HISTORY_SIZE
 
 #define XAXIS_CHANNEL 3
 #define YAXIS_CHANNEL 2
@@ -98,7 +98,6 @@ void loop() {
     }
     else{
       digitalWrite(8, LOW);
-      Serial.println("E-BRAKE");
     }
   }
 }
