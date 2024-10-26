@@ -47,8 +47,8 @@ void setup() {
   Joystick.setYAxisRange(MIN_SIGNAL, MAX_SIGNAL);
   Joystick.setRxAxisRange(MIN_SIGNAL, MAX_SIGNAL);
   Joystick.setRyAxisRange(MIN_SIGNAL, MAX_SIGNAL);
-  Joystick.setRudderRange(MIN_SIGNAL, MAX_SIGNAL);
-  Joystick.setThrottleRange(MIN_SIGNAL, MAX_SIGNAL);
+  //Joystick.setRudderRange(MIN_SIGNAL, MAX_SIGNAL);
+  //Joystick.setThrottleRange(MIN_SIGNAL, MAX_SIGNAL);
   
   // Begin!!!
   Joystick.begin();
@@ -86,13 +86,17 @@ void loop() {
     Joystick.setYAxis(yAxisTracker.get_estimated());
     Joystick.setRxAxis(rxTracker.get_estimated());
     Joystick.setRyAxis(ryTracker.get_estimated());
-    Joystick.setRudder(rubberTracker.get_estimated());
-    Joystick.setThrottle(throttleTracker.get_estimated());
+    //Joystick.setRudder(rubberTracker.get_estimated());
+    //Joystick.setThrottle(throttleTracker.get_estimated());
     Joystick.setButton(0,get_button_state(lButTracker.get_estimated()));
     Joystick.setButton(1,get_button_state(rButTracker.get_estimated()));
+    Joystick.setButton(2,get_button_state(rubberTracker.get_estimated()));
+    Joystick.setButton(3,get_button_state(throttleTracker.get_estimated()));
     
     if (lButTracker.get_estimated() > MAJORITY_THREASH || 
-        rButTracker.get_estimated() > MAJORITY_THREASH)
+        rButTracker.get_estimated() > MAJORITY_THREASH ||
+        rubberTracker.get_estimated() > MAJORITY_THREASH ||
+        throttleTracker.get_estimated() > MAJORITY_THREASH)
     {
       digitalWrite(8, HIGH);
     }
